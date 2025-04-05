@@ -8,7 +8,7 @@ public class RegistrationTest extends BaseTest {
     @Test(description = "Verification of successful user registration with valid data",
             retryAnalyzer = Retry.class)
     public void registrationSuccessTest() {
-        registrationStep
+        registrationSteps
                 .registration
                         (REGISTRATION_URL, "qwerasd@gmail.com", "Rutube-2", "Rutube-2");
         Assert.assertEquals(registrationPage.isRegistrationSuccessful(), SUCCESS_REGISTRATION_TEXT);
@@ -16,19 +16,19 @@ public class RegistrationTest extends BaseTest {
 
     @Test(description = "Verification of registration form filling without clicking OK",
             retryAnalyzer = Retry.class)
-    public void registrationFormFillingTest() {
-        registrationStep
-                .registrationFormFillingTest
-                        (REGISTRATION_URL,"qwerasd", "йцуйцу", "йцуйцу");
+    public void verifyRegistrationFormFillingWithoutClickingOkTest() {
+        registrationSteps
+                .registrationFormFilling
+                        (REGISTRATION_URL, "qwerasd", "йцуйцу", "йцуйцу");
         Assert.assertTrue(registrationPage.isOkButtonDisabled());
     }
 
-    @Test(description = "Verification Error message",
+    @Test(description = "Verify error message when registration fails due to missing checkboxes",
             retryAnalyzer = Retry.class)
-    public void registrationVerificationErrorMessageTest() {
-        registrationStep
+    public void verifyRegistrationErrorMessageDueToMissingCheckboxesTest() {
+        registrationSteps
                 .fillRegistrationPageWithoutCheckboxes
-                        (REGISTRATION_URL,"qwerasd@gmail.com", "Rutube-2", "Rutube-2");
-        Assert.assertEquals(registrationPage.getErrorMessage(), ERROR_REGISTRATION_TEXT);
+                        (REGISTRATION_URL, "qwerasd@gmail.com", "Rutube-2", "Rutube-2");
+        Assert.assertEquals(registrationPage.getRegistrationErrorMessage(), ERROR_REGISTRATION_TEXT);
     }
 }

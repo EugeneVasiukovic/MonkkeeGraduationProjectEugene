@@ -1,5 +1,7 @@
 package elements;
 
+import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Checkbox {
@@ -10,7 +12,12 @@ public class Checkbox {
         this.label = label;
     }
 
-    public void checkboxClick(){
-        $x(String.format(CHECKBOX_LOCATOR, label)).click();
+    public void setCheckboxValue(boolean selected) {
+        SelenideElement checkbox = $x(String.format(CHECKBOX_LOCATOR, label));
+        if (selected && !checkbox.isSelected()) {
+            checkbox.click();
+        } else if (!selected && checkbox.isSelected()) {
+            checkbox.click();
+        }
     }
 }

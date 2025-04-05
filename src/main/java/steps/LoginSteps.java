@@ -11,10 +11,10 @@ public class LoginSteps {
     }
 
     @Step("Login user: login and password")
-    public void login(String url,String login, String password){
+    public void login(String url, String login, String password) {
         loginPage
                 .openPage(url)
-                .isOpenPage()
+                .isPageOpened()
                 .login(login, password);
     }
 }
