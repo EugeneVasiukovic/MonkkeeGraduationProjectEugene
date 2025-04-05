@@ -13,6 +13,4 @@ public class Checkbox {
     public void checkboxClick(){
         $x(String.format(CHECKBOX_LOCATOR, label)).click();
     }
-
-
 }
