@@ -24,6 +24,10 @@
         <jackson-dataformat-yaml.version>2.17.2</jackson-dataformat-yaml.version>
         <selenide.version>7.7.3</selenide.version>
         <selenide-core.version>7.7.3</selenide-core.version>
+        <log4j-slf4j-impl.version>2.20.0</log4j-slf4j-impl.version>
+        <log4j-api.version>2.20.0</log4j-api.version>
+        <selenium-java.version>4.29.0</selenium-java.version>
+        <suiteXmlFile>MonkkeeAllTest.xml</suiteXmlFile>
     </properties>
     <build>
         <plugins>
@@ -32,12 +36,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar -Xmx256m
-                    </argLine>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/MonkkeeAllTest.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                    <includes>
+                        <include>/*LoginTest.java</include>
+                        <include>**/*RegistrationTest.java</include>
+                    </includes>
                 </configuration>
                 <dependencies>
-                    <!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
@@ -45,6 +52,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
@@ -111,6 +119,21 @@
             <groupId>com.codeborne</groupId>
             <artifactId>selenide-core</artifactId>
             <version>${selenide-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j-slf4j-impl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
         </dependency>
     </dependencies>
 </project>
