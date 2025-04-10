@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Checkbox;
@@ -134,7 +133,7 @@ public class RegistrationPage extends BasePage {
      *
      * @return The success message.
      */
-    public String isRegistrationSuccessful() {
+    public String getRegistrationSuccessful() {
         log.info("Checking if registration was successful.");
         return SUCCESS_MESSAGE.shouldBe(visible).getText();
     }

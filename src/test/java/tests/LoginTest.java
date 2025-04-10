@@ -1,5 +1,6 @@
 package tests;
 
+import core.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,6 +35,6 @@ public class LoginTest extends BaseTest {
     public void loginWithIncorrectPasswordAndLoginFieldsTest() {
         loginSteps
                 .login(LOGIN_URL, "asdsad", "asdasd");
-        Assert.assertEquals(loginPage.getLoginFormFailedMessage(), ERROR_TEXT_INCCORECT_FILD_LOGIN_FORM);
+        Assert.assertEquals(loginPage.getLoginFormFailedMessage(), ERROR_TEXT_INCCORECT_FIELD_LOGIN_FORM);
     }
 }

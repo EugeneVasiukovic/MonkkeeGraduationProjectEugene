@@ -1,5 +1,6 @@
 package tests;
 
+import core.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ public class RegistrationTest extends BaseTest {
         registrationSteps
                 .registration
                         (REGISTRATION_URL, "qwerasd@gmail.com", "Rutube-2", "Rutube-2");
-        Assert.assertEquals(registrationPage.isRegistrationSuccessful(), SUCCESS_REGISTRATION_TEXT);
+        Assert.assertEquals(registrationPage.getRegistrationSuccessful(), SUCCESS_REGISTRATION_TEXT);
     }
 
     @Test(description = "Verification of registration form filling without clicking OK",

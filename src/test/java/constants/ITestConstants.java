@@ -5,6 +5,6 @@ public interface ITestConstants {
     String ERROR_REGISTRATION_TEXT = "Registration not successful";
     String LOGIN_SUCCESSFUL_TEXT = "Welcome to monkkee!";
     String ERROR_TEXT_LOGIN_FORM = "Mandatory field";
-    String ERROR_TEXT_INCCORECT_FILD_LOGIN_FORM = "Login failed";
+    String ERROR_TEXT_INCCORECT_FIELD_LOGIN_FORM = "Login failed";
 }
 

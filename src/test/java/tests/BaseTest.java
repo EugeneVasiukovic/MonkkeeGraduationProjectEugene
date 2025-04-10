@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import constants.ITestConstants;
+import core.PropertyReader;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +14,7 @@ import pages.LoginPage;
 import pages.RegistrationPage;
 import steps.LoginSteps;
 import steps.RegistrationSteps;
-import testlisteners.TestListener;
+import core.TestListener;
 
 import java.util.HashMap;
 import java.util.Map;
