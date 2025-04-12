@@ -53,7 +53,8 @@ public class DiaryTest extends BaseTest {
     public void createPostOnFutureDateTest() {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
-        diarySteps.createPostOnFutureDate("Lorem impsun", "30");
+        diarySteps
+                .createPostOnFutureDate("Lorem impsun", "30");
     }
 
     @Test(description = "Print post with text",
@@ -62,8 +63,10 @@ public class DiaryTest extends BaseTest {
     public void checkPrintPostTest() {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
-        diarySteps.createPost("lorem impsun1");
-        diarySteps.printPost("lorem impsun1");
+        diarySteps
+                .createPost("lorem impsun1");
+        diarySteps
+                .printPost("lorem impsun1");
     }
 
     @Test(description = "Go back to the last post with text",
@@ -76,7 +79,8 @@ public class DiaryTest extends BaseTest {
                 .createPost("text321");
         diarySteps
                 .createPost("text321");
-        diarySteps.goBackToLastPost("text321");
+        diarySteps
+                .goBackToLastPost("text321");
     }
 
     @Test(description = "Delete Post",
