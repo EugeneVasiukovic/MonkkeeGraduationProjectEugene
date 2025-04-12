@@ -4,6 +4,7 @@
         <classes>
             <class name="tests.RegistrationTest"/>
             <class name="tests.LoginTest"/>
+            <class name="tests.DiaryTest"></class>
         </classes>
     </test>
 </suite>

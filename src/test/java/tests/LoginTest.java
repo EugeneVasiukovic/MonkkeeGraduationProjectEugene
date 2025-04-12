@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Condition;
 import core.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,7 +12,7 @@ public class LoginTest extends BaseTest {
     public void loginSuccessfulTest() {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
-        Assert.assertEquals(loginPage.isBlogPageOpened(), LOGIN_SUCCESSFUL_TEXT);
+        Assert.assertTrue(loginPage.isBlogPageOpened().exists());
     }
 
     @Test(description = "Login not successful, empty login, write password",

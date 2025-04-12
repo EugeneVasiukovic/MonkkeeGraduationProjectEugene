@@ -10,8 +10,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
+import pages.DiaryPage;
 import pages.LoginPage;
 import pages.RegistrationPage;
+import steps.DiarySteps;
 import steps.LoginSteps;
 import steps.RegistrationSteps;
 import core.TestListener;
@@ -29,6 +31,8 @@ public class BaseTest implements ITestConstants {
     protected RegistrationSteps registrationSteps;
     protected LoginPage loginPage;
     protected LoginSteps loginSteps;
+    protected DiaryPage diaryPage;
+    protected DiarySteps diarySteps;
     public static String LOGIN = PropertyReader.getProperty("login");
     public static String PASSWORD = PropertyReader.getProperty("password");
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
@@ -40,6 +44,8 @@ public class BaseTest implements ITestConstants {
         registrationSteps = new RegistrationSteps();
         loginPage = new LoginPage();
         loginSteps = new LoginSteps();
+        diaryPage = new DiaryPage();
+        diarySteps = new DiarySteps();
     }
 
     @BeforeMethod
