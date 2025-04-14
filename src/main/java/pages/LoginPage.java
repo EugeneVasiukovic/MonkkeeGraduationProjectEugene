@@ -5,13 +5,15 @@ import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
+
 @Log4j2
 public class LoginPage extends BasePage {
+    private static final SelenideElement BUTTON_CREATE_POST = $(By.id("create-entry"));
     private static final SelenideElement BUTTON_LOGIN = $x("//*[@type='submit']");
-    private static final SelenideElement BLOG_PAGE_HEADER = $x("//div[contains(text(), 'Welcome to monkkee!')]");
     private static final SelenideElement LOGIN_ERROR_MESSAGE = $x("//input[@name='login']/following-sibling::div[contains(@class, 'help-block')]");
     private static final SelenideElement PASSWORD_ERROR_MESSAGE = $x("//div[@class='password-toggle-wrapper']/following-sibling::div[contains(@class, 'help-block')]");
     private static final SelenideElement LOGIN_FAILED_MESSAGE = $x("//div[contains(@class, 'alert') and contains(text(), 'Login failed')]");
@@ -72,9 +74,9 @@ public class LoginPage extends BasePage {
      *
      * @return The text of the blog page header.
      */
-    public String isBlogPageOpened() {
+    public SelenideElement isBlogPageOpened() {
         log.info("Checking if blog page is opened.");
-        return BLOG_PAGE_HEADER.shouldBe(Condition.visible).getText();
+        return BUTTON_CREATE_POST.shouldBe(Condition.visible);
     }
 
     /**
@@ -93,22 +95,18 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Gets the error message displayed under the password field.
+     * Gets the error message displayed under the password field or the login failed message.
      *
+     * @param isPasswordError If true, retrieves the password error message; otherwise, retrieves the login failed message.
      * @return The error message.
      */
-    public String getPasswordErrorMessage() {
-        log.info("Getting error message from password field.");
-        return PASSWORD_ERROR_MESSAGE.getText();
+    public String getErrorMessage(boolean isPasswordError) {
+        log.info("Getting error message. Is password error: " + isPasswordError);
+        if (isPasswordError) {
+            return PASSWORD_ERROR_MESSAGE.getText();
+        } else {
+            return LOGIN_FAILED_MESSAGE.getText();
+        }
     }
 
-    /**
-     * Gets the login failed message displayed on the login page.
-     *
-     * @return The login failed message.
-     */
-    public String getLoginFormFailedMessage() {
-        log.info("Getting login failed message from login page.");
-        return LOGIN_FAILED_MESSAGE.getText();
-    }
 }

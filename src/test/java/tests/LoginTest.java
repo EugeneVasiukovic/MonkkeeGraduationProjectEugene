@@ -11,7 +11,7 @@ public class LoginTest extends BaseTest {
     public void loginSuccessfulTest() {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
-        Assert.assertEquals(loginPage.isBlogPageOpened(), LOGIN_SUCCESSFUL_TEXT);
+        Assert.assertTrue(loginPage.isBlogPageOpened().exists());
     }
 
     @Test(description = "Login not successful, empty login, write password",
@@ -27,7 +27,7 @@ public class LoginTest extends BaseTest {
     public void loginWithEmptyPasswordFieldTest() {
         loginSteps
                 .login(LOGIN_URL, LOGIN, "");
-        Assert.assertEquals(loginPage.getPasswordErrorMessage(), ERROR_TEXT_LOGIN_FORM);
+        Assert.assertEquals(loginPage.getErrorMessage(true), ERROR_TEXT_LOGIN_FORM);
     }
 
     @Test(description = "Login not successful send incorrect field login and password",
@@ -35,6 +35,6 @@ public class LoginTest extends BaseTest {
     public void loginWithIncorrectPasswordAndLoginFieldsTest() {
         loginSteps
                 .login(LOGIN_URL, "asdsad", "asdasd");
-        Assert.assertEquals(loginPage.getLoginFormFailedMessage(), ERROR_TEXT_INCCORECT_FIELD_LOGIN_FORM);
+        Assert.assertEquals(loginPage.getErrorMessage(false), ERROR_TEXT_INCCORECT_FIELD_LOGIN_FORM);
     }
 }
