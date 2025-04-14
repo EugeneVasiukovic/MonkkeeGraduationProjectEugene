@@ -13,8 +13,8 @@ public class MainTest extends BaseTest{
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .createPost("test");
+                .createPostAndCheckCreated("test");
         diarySteps
-                .deletePost();
+                .deletePostAndCheckDeleted();
     }
 }

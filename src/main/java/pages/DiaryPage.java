@@ -58,7 +58,7 @@ public class DiaryPage extends BasePage {
      * @param nameTag Name of the tag.
      * @return DiaryPage instance.
      */
-    public DiaryPage CreatePostAndAddNewTag(String text, String nameTag) {
+    public DiaryPage createPostAndAddNewTag(String text, String nameTag) {
         log.info("Creating post with text: " + text + " and adding new tag: " + nameTag);
         fillDiaryForm(text);
         new Input("new-tag").write(nameTag);
@@ -76,7 +76,7 @@ public class DiaryPage extends BasePage {
      * @param textPost Text of the post.
      * @return DiaryPage instance.
      */
-    public DiaryPage DeleteAnTagInACreatedPost(String textPost) {
+    public DiaryPage deleteAnTagInACreatedPost(String textPost) {
         log.info("Deleting tag in post with text: " + textPost);
         new Button(textPost).clickContent();
         ELEMENT_HOVER_TAG.hover().click();

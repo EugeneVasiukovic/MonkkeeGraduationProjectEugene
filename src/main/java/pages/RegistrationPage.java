@@ -119,22 +119,18 @@ public class RegistrationPage extends BasePage {
     }
 
     /**
-     * Gets the error message displayed on the registration page.
+     * Gets the error or success message displayed on the registration page.
      *
-     * @return The error message.
+     * @param isError If true, retrieves the error message; otherwise, retrieves the success message.
+     * @return The message.
      */
-    public String getRegistrationErrorMessage() {
-        log.info("Getting error message from registration page.");
-        return ERROR_MESSAGE.getText();
+    public String getRegistrationMessage(boolean isError) {
+        log.info("Getting registration message. Is error: " + isError);
+        if (isError) {
+            return ERROR_MESSAGE.getText();
+        } else {
+            return SUCCESS_MESSAGE.shouldBe(visible).getText();
+        }
     }
 
-    /**
-     * Checks if the registration was successful by getting the success message.
-     *
-     * @return The success message.
-     */
-    public String getRegistrationSuccessful() {
-        log.info("Checking if registration was successful.");
-        return SUCCESS_MESSAGE.shouldBe(visible).getText();
-    }
 }

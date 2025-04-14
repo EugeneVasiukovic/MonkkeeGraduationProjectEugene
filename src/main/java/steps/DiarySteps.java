@@ -11,49 +11,51 @@ public class DiarySteps {
     }
 
     @Step("Create a post with text: {text}")
-    public void createPost(String text) {
+    public void createPostAndCheckCreated(String text) {
         diaryPage
                 .createPost(text);
     }
 
     @Step("Create a post with text: {text} and tag: {tag}")
-    public void createPostWithTag(String text, String tag) {
+    public void createPostWithTagAndCheckCreated(String text, String tag) {
         diaryPage
-                .CreatePostAndAddNewTag(text, tag);
+                .createPostAndAddNewTag(text, tag);
     }
 
     @Step("Delete tag from post with text: {textPost}")
-    public void deleteTagFromPost(String textPost) {
+    public void deleteTagFromPostAndCheckDeleted(String textPost) {
         diaryPage
-                .DeleteAnTagInACreatedPost(textPost);
+                .deleteAnTagInACreatedPost(textPost);
     }
 
     @Step("Edit post text from {oldTextPost} to {newText}")
-    public void editPostText(String oldTextPost, String newText) {
+    public void editPostTextAndCheckUpdated(String oldTextPost, String newText) {
         diaryPage
                 .updatePostAddNewText(oldTextPost, newText);
     }
 
     @Step("Create a post with text: {text} on future date: {date}")
-    public void createPostOnFutureDate(String text, String date) {
+    public void createPostOnFutureDateAndCheckCreated(String text, String date) {
         diaryPage
                 .createPostOnFutureDate(text, date);
     }
 
     @Step("Print post with text: {textPost}")
-    public void printPost(String textPost) {
-        diaryPage.goToPostAndClickPrint(textPost);
-        diaryPage.verifyPrintWindowText(textPost);
+    public void printPostAndCheckPrinted(String textPost) {
+        diaryPage
+                .goToPostAndClickPrint(textPost);
+        diaryPage
+                .verifyPrintWindowText(textPost);
     }
 
     @Step("Go back to the last post with text: {textPost}")
-    public void goBackToLastPost(String textPost) {
+    public void goBackToLastPostAndCheckNavigated(String textPost) {
         diaryPage
                 .goBackToTheLastPost(textPost);
     }
 
     @Step("Delete the created post")
-    public void deletePost() {
+    public void deletePostAndCheckDeleted() {
         diaryPage
                 .deletePost();
     }

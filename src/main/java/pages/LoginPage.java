@@ -95,22 +95,18 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Gets the error message displayed under the password field.
+     * Gets the error message displayed under the password field or the login failed message.
      *
+     * @param isPasswordError If true, retrieves the password error message; otherwise, retrieves the login failed message.
      * @return The error message.
      */
-    public String getPasswordErrorMessage() {
-        log.info("Getting error message from password field.");
-        return PASSWORD_ERROR_MESSAGE.getText();
+    public String getErrorMessage(boolean isPasswordError) {
+        log.info("Getting error message. Is password error: " + isPasswordError);
+        if (isPasswordError) {
+            return PASSWORD_ERROR_MESSAGE.getText();
+        } else {
+            return LOGIN_FAILED_MESSAGE.getText();
+        }
     }
 
-    /**
-     * Gets the login failed message displayed on the login page.
-     *
-     * @return The login failed message.
-     */
-    public String getLoginFormFailedMessage() {
-        log.info("Getting login failed message from login page.");
-        return LOGIN_FAILED_MESSAGE.getText();
-    }
 }

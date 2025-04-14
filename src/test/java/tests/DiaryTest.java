@@ -12,7 +12,7 @@ public class DiaryTest extends BaseTest {
         loginSteps.
                 login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps.
-                createPost("Test1");
+                createPostAndCheckCreated("Test1");
     }
 
     @Test(description = "Create a post with text and tag",
@@ -22,7 +22,7 @@ public class DiaryTest extends BaseTest {
         loginSteps.
                 login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .createPostWithTag("test2", "test2");
+                .createPostWithTagAndCheckCreated("test2", "test2");
     }
 
     @Test(description = "Create a post with text and tag, and delete tag with post",
@@ -32,9 +32,9 @@ public class DiaryTest extends BaseTest {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .createPostWithTag("test3", "tes3t");
+                .createPostWithTagAndCheckCreated("test3", "123");
         diarySteps
-                .deleteTagFromPost("test3");
+                .deleteTagFromPostAndCheckDeleted("test3");
     }
 
     @Test(description = "Edit post text",
@@ -44,7 +44,7 @@ public class DiaryTest extends BaseTest {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .editPostText("Test1", "TestTestTest");
+                .editPostTextAndCheckUpdated("Test1", "TestTestTest");
     }
 
     @Test(description = "Create post on future date",
@@ -54,7 +54,7 @@ public class DiaryTest extends BaseTest {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .createPostOnFutureDate("Lorem impsun", "30");
+                .createPostOnFutureDateAndCheckCreated("Lorem impsun", "30");
     }
 
     @Test(description = "Print post with text",
@@ -64,9 +64,9 @@ public class DiaryTest extends BaseTest {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .createPost("lorem impsun1");
+                .createPostAndCheckCreated("lorem impsun1");
         diarySteps
-                .printPost("lorem impsun1");
+                .printPostAndCheckPrinted("lorem impsun1");
     }
 
     @Test(description = "Go back to the last post with text",
@@ -76,11 +76,11 @@ public class DiaryTest extends BaseTest {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .createPost("text321");
+                .createPostAndCheckCreated("text321");
         diarySteps
-                .createPost("text321");
+                .createPostAndCheckCreated("text321");
         diarySteps
-                .goBackToLastPost("text321");
+                .goBackToLastPostAndCheckNavigated("text321");
     }
 
     @Test(description = "Delete Post",
@@ -90,6 +90,6 @@ public class DiaryTest extends BaseTest {
         loginSteps
                 .login(LOGIN_URL, LOGIN, PASSWORD);
         diarySteps
-                .deletePost();
+                .deletePostAndCheckDeleted();
     }
 }

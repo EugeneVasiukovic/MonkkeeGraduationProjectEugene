@@ -12,7 +12,7 @@ public class RegistrationTest extends BaseTest {
         registrationSteps
                 .registration
                         (REGISTRATION_URL, "qwerasd@gmail.com", "Rutube-2", "Rutube-2");
-        Assert.assertEquals(registrationPage.getRegistrationSuccessful(), SUCCESS_REGISTRATION_TEXT);
+        Assert.assertEquals(registrationPage.getRegistrationMessage(false), SUCCESS_REGISTRATION_TEXT);
     }
 
     @Test(description = "Verification of registration form filling without clicking OK",
@@ -30,6 +30,6 @@ public class RegistrationTest extends BaseTest {
         registrationSteps
                 .fillRegistrationPageWithoutCheckboxes
                         (REGISTRATION_URL, "qwerasd@gmail.com", "Rutube-2", "Rutube-2");
-        Assert.assertEquals(registrationPage.getRegistrationErrorMessage(), ERROR_REGISTRATION_TEXT);
+        Assert.assertEquals(registrationPage.getRegistrationMessage(true), ERROR_REGISTRATION_TEXT);
     }
 }
