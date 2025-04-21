@@ -37,7 +37,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/MonkkeeAllTest.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <includes>
                         <include>/*LoginTest.java</include>
